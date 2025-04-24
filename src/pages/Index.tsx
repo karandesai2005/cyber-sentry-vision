@@ -6,6 +6,7 @@ import IPTable, { IPData } from '@/components/IPTable';
 import PermissionsList, { AppPermission } from '@/components/PermissionsList';
 import AlertBanner, { AlertType } from '@/components/AlertBanner';
 import StatsSummary from '@/components/StatsSummary';
+import USBMonitor from '@/components/USBMonitor';
 import { toast } from "@/components/ui/use-toast";
 
 // Mock data for demonstration
@@ -233,6 +234,8 @@ const Index = () => {
             alertsDetected={alertsDetected} 
           />
           
+          <USBMonitor />
+          
           <div className="grid md:grid-cols-2 gap-6">
             <IPTable ipData={ipData} />
             <PermissionsList permissions={permissionData} />
@@ -241,13 +244,14 @@ const Index = () => {
           <div className="mt-8 p-4 bg-cyber-gray rounded border border-cyber-blue/30">
             <h3 className="font-medium text-lg mb-2">Setup Instructions:</h3>
             <div className="space-y-2 text-sm text-muted-foreground">
-              <p>This is a frontend prototype of CyberSentry. To connect to the backend:</p>
+              <p>This is a frontend prototype of CyberSentry. For full functionality:</p>
               <ol className="list-decimal list-inside space-y-1 pl-4">
-                <li>Install Python dependencies: <code className="bg-cyber-dark px-2 py-1 rounded text-xs">pip install flask flask-socketio scapy requests</code></li>
-                <li>Setup ADB for Android monitoring: <code className="bg-cyber-dark px-2 py-1 rounded text-xs">adb devices</code></li>
-                <li>Run Flask server: <code className="bg-cyber-dark px-2 py-1 rounded text-xs">python server.py</code></li>
+                <li>Enable WebUSB in your browser settings</li>
+                <li>Connect a USB device to your computer</li>
+                <li>Click "Scan for USB Devices" to detect connected devices</li>
+                <li>Grant permission when prompted by your browser</li>
               </ol>
-              <p className="mt-2">Note: For Scapy to work, administrator/root privileges may be required.</p>
+              <p className="mt-2">Note: USB monitoring requires a supported browser and proper permissions.</p>
             </div>
           </div>
         </div>
