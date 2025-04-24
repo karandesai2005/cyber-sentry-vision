@@ -4,6 +4,17 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Usb } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
 
+// Extend the Navigator interface to include USB
+declare global {
+  interface Navigator {
+    usb: {
+      requestDevice(options: { filters: any[] }): Promise<any>;
+      addEventListener(type: string, callback: (event: any) => void): void;
+      getDevices(): Promise<any[]>;
+    };
+  }
+}
+
 interface USBDevice {
   productId: string;
   vendorId: string;
